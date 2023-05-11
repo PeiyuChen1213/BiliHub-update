@@ -1,0 +1,57 @@
+server:
+  port: 15005
+spring:
+  #应用名称
+  application:
+    name: bilibili
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/bilibili
+    username: root
+    password: 1234
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  redis:
+    host: 192.168.85.128
+    port: 6379
+    password: 1234
+#消息队列的配置属性
+rocketmq:
+  name:
+    server:
+      address: 192.168.85.128:9876
+
+fdfs:
+  tracker-list: 192.168.85.128:22122
+  connect-timeout: 600
+  http:
+    storage-addr: http://192.168.85.128:8888/group1/
+
+file:
+  servlet:
+    multipart:
+      max-file-size: 500MB
+      max-request-size: 1GB
+
+elasticsearch:
+  url: 192.168.85.128:9200
+
+logging:
+  level:
+    com.imooc: DEBUG
+
+# 百度AI
+baidu:
+  develop:
+    clientId: sbjRmx1aqUBE1FRicpKfh4M1
+    clientSecret: 7T6E3sajEAqkA38klRVGaXusNYB0QbZC
+    auth:
+      url: https://aip.baidubce.com/oauth/2.0/token
+    splitBody:
+      url: https://aip.baidubce.com/rest/2.0/image-classify/v1/body_seg
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: cn.chenpeiyu.bilihub.domain
+  configuration:
+    #日志开启
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
