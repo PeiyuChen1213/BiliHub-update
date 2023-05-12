@@ -42,6 +42,7 @@ public class FileService {
         return url;
     }
 
+
     public String getFileMD5(MultipartFile file) throws Exception {
         return MD5Util.getFileMD5(file);
     }

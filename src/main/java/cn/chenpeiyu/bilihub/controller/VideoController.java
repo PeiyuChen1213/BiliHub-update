@@ -36,7 +36,7 @@ public class VideoController {
         Long userId = userSupport.getCurrentUserId();
         video.setUserId(userId);
         videoService.addVideos(video);
-        //在es中添加一条视频数据
+        //在es当中同步添加一条视频数据
         elasticSearchService.addVideo(video);
         return JsonResponse.success();
     }

@@ -107,6 +107,7 @@ public class FastDFSUtil {
         String uploadedSizeStr = redisTemplate.opsForValue().get(uploadedSizeKey);
         Long uploadedSize = 0L;
         if (!StringUtil.isNullOrEmpty(uploadedSizeStr)) {
+            //查看已经上传了多少的内容
             uploadedSize = Long.valueOf(uploadedSizeStr);
         }
         if (sliceNo == 1) { //上传的是第一个分片
@@ -114,14 +115,18 @@ public class FastDFSUtil {
             if (StringUtil.isNullOrEmpty(path)) {
                 throw new ConditionException("上传失败！");
             }
+            //记录已经上传的位置
             redisTemplate.opsForValue().set(pathKey, path);
             redisTemplate.opsForValue().set(uploadedNoKey, "1");
         } else {
+            //从redis查询到该文件的pathKey
             String filePath = redisTemplate.opsForValue().get(pathKey);
             if (StringUtil.isNullOrEmpty(filePath)) {
                 throw new ConditionException("上传失败！");
             }
+            //上传这个分片
             this.modifyAppenderFile(file, filePath, uploadedSize);
+            // 更新已经上传的片数
             redisTemplate.opsForValue().increment(uploadedNoKey);
         }
         // 修改历史上传分片文件大小

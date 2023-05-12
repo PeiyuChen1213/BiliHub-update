@@ -15,7 +15,7 @@ public class FileController {
     private FileService fileService;
 
     /**
-     * 返回md5加密之后的文件
+     *  获取文件的md5的值
      * @param file
      * @return
      * @throws Exception
