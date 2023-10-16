@@ -145,7 +145,6 @@ public class UserController {
 
     /**
      * 退出登录 删除掉refreshToken
-     *
      * @param request
      * @return
      */
@@ -159,7 +158,6 @@ public class UserController {
 
     /**
      * 刷新接入token
-     *
      * @param request
      * @return
      * @throws Exception

@@ -27,6 +27,7 @@ public class UserMomentsController {
 
     /**
      * 发送动态
+     *
      * @param userMoment 动态
      * @return
      * @throws Exception
@@ -43,10 +44,11 @@ public class UserMomentsController {
 
     /**
      * 获取动态
+     *
      * @return 动态的列表
      */
     @GetMapping("/user-subscribed-moments")
-    public JsonResponse<List<UserMoment>> getUserSubscribedMoments(){
+    public JsonResponse<List<UserMoment>> getUserSubscribedMoments() {
         Long userId = userSupport.getCurrentUserId();
         List<UserMoment> list = userMomentsService.getUserSubscribedMoments(userId);
         return new JsonResponse<>(list);

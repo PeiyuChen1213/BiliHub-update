@@ -17,14 +17,15 @@ public class CommonGlobalExceptionHandler {
 
     @ExceptionHandler(value = Exception.class)
     @ResponseBody
-    public JsonResponse<String> commonExceptionHandler(HttpServletRequest request, Exception e){
+    public JsonResponse<String> commonExceptionHandler(HttpServletRequest request, Exception e) {
         String errorMsg = e.getMessage();
 //        如果异常的类型是我们自定义的异常，将异常的状态码和异常信息返回给前端用于做其他处理
-        if(e instanceof ConditionException){
-            String errorCode = ((ConditionException)e).getCode();
+
+        if (e instanceof ConditionException) {
+            String errorCode = ((ConditionException) e).getCode();
             return new JsonResponse<>(errorCode, errorMsg);
-        }else{
-            return new JsonResponse<>("500",errorMsg);
+        } else {
+            return new JsonResponse<>("500", errorMsg);
         }
     }
 }
